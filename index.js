@@ -23,7 +23,13 @@ function create (size) {
 function hash (tokenBuf, namespace) {
   assert(Buffer.isBuffer(tokenBuf), 'tokenBuf must be Buffer')
 
-  if (typeof namespace === 'string') namespace = Buffer.from(namespace)
+  if (typeof namespace === 'string') {
+    var bytes = Buffer.byteLength(namespace)
+    assert(bytes >= APPTOKEN_BYTES_MIN, 'byteLength of namespace must at least APPTOKEN_BYTES_MIN (' + APPTOKEN_BYTES_MIN + ')')
+    assert(bytes <= APPTOKEN_BYTES_MAX, 'byteLength of namespace must at most APPTOKEN_BYTES_MAX (' + APPTOKEN_BYTES_MAX + ')')
+    namespace = Buffer.from(namespace)
+  }
+
   assert(namespace == null ? true : Buffer.isBuffer(namespace), 'namespace must be Buffer')
   assert(namespace == null ? true : namespace.length >= APPTOKEN_BYTES_MIN, 'namespace must at least APPTOKEN_BYTES_MIN (' + APPTOKEN_BYTES_MIN + ')')
   assert(namespace == null ? true : namespace.length <= APPTOKEN_BYTES_MAX, 'namespace must at most APPTOKEN_BYTES_MAX (' + APPTOKEN_BYTES_MAX + ')')
