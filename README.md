@@ -1,5 +1,7 @@
 # `secure-token`
 
+[![Build Status](https://travis-ci.org/emilbayes/secure-token.svg?branch=master)](https://travis-ci.org/emilbayes/secure-token)
+
 > Simple, secure tokens for authentication, access keys, sessions etc.
 
 ## Usage
