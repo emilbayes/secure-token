@@ -17,11 +17,13 @@ function create (size) {
   return res
 }
 
+var EMPTY_BUF = Buffer.alloc(0)
 // namespace can be used to seperate different various token uses eg. session,
 // access, deploy etc.
 function hash (tokenBuf, namespace) {
   assert(Buffer.isBuffer(tokenBuf), 'tokenBuf must be Buffer')
 
+  if (namespace == null) namespace = EMPTY_BUF
   if (typeof namespace === 'string') namespace = Buffer.from(namespace)
   assert(namespace == null ? true : Buffer.isBuffer(namespace), 'namespace must be Buffer')
 
