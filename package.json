@@ -1,6 +1,6 @@
 {
   "name": "secure-token",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Simple, secure tokens for authentication, access keys, sessions etc.",
   "main": "index.js",
   "dependencies": {
