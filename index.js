@@ -34,8 +34,8 @@ function hash (tokenBuf, namespace) {
 }
 
 module.exports = {
-  create: create,
-  hash: hash,
-  APPTOKEN_BYTES_MIN: APPTOKEN_BYTES_MIN,
-  APPTOKEN_BYTES: APPTOKEN_BYTES
+  create,
+  hash,
+  APPTOKEN_BYTES_MIN,
+  APPTOKEN_BYTES
 }
