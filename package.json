@@ -4,8 +4,8 @@
   "description": "Simple, secure tokens for authentication, access keys, sessions etc.",
   "main": "index.js",
   "dependencies": {
-    "nanoassert": "^1.1.0",
-    "sodium-universal": "^2.0.0"
+    "nanoassert": "^2.0.0",
+    "sodium-native": "^3.1.1"
   },
   "devDependencies": {
     "tape": "^4.8.0"

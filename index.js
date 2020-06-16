@@ -1,4 +1,4 @@
-var sodium = require('sodium-universal')
+var sodium = require('sodium-native')
 var assert = require('nanoassert')
 
 var APPTOKEN_BYTES_MIN = 16 // 128 bits
@@ -12,7 +12,7 @@ function create (size) {
   assert(size == null ? true : size >= APPTOKEN_BYTES_MIN, 'size must be at least APPTOKEN_BYTES_MIN (' + APPTOKEN_BYTES_MIN + ')')
   assert(size == null ? true : Number.isSafeInteger(size), 'size must be safe integer')
 
-  var res = new Buffer(size || APPTOKEN_BYTES)
+  var res = Buffer.alloc(size || APPTOKEN_BYTES)
   sodium.randombytes_buf(res)
   return res
 }
@@ -27,7 +27,7 @@ function hash (tokenBuf, namespace) {
   if (typeof namespace === 'string') namespace = Buffer.from(namespace)
   assert(namespace == null ? true : Buffer.isBuffer(namespace), 'namespace must be Buffer')
 
-  var output = new Buffer(sodium.crypto_generichash_BYTES)
+  var output = Buffer.alloc(sodium.crypto_generichash_BYTES)
 
   sodium.crypto_generichash(output, Buffer.concat([namespace, tokenBuf]))
   return output
